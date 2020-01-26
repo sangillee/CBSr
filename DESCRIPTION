@@ -1,0 +1,17 @@
+Package: CBSr
+Type: Package
+Title: Fits Cubic Bezier Spline functions to intertemporal and risky choice data
+Version: 1.0.0
+Authors@R: person("Sangil", "Lee", email = "sangillee3rd@gmail.com", role = c("aut", "cre"))
+Description: Package for using Cubic Bezier Spline as a function approximator especially in modeling latent utility functions.
+    While Cubic Bezier Splines (CBS) are heavily used in the graphics software industry, it can also be used as a flexible function
+    approximation tool given the right constraints. The CBS package provides a method to calculate the y value from a x value given
+    an appropriately constrained CBS curve. It then uses this method to approximate latent utility functions in intertemporal choice
+    and risky choice data. See PsyArXiv preprint: https://doi.org/10.31234/osf.io/2ugwr
+License: GPL-3
+Depends: R (>= 3.5), rJava (>= 0.9-11), NlcOptim (>= 0.6)
+Encoding: UTF-8
+LazyData: true
+Imports: rJava, NlcOptim
+SystemRequirements: Java (>= 7.0)
+NeedsCompilation: no

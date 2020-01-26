@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1579995752327.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2295199144",
+    "id" : "6AFE6A77",
+    "lastKnownWriteTime" : 1580000219,
+    "last_content_update" : 1580000219823,
+    "path" : "Q:/DRIVE/Research/AA_Toolbox/CBS/R/CBSr/R/CBS_RC.R",
+    "project_path" : "R/CBS_RC.R",
+    "properties" : {
+        "cursorPosition" : "32,33",
+        "scrollLine" : "0",
+        "source_window_id" : "",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

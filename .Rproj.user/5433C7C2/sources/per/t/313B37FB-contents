@@ -1,0 +1,48 @@
+# CBSfunc.R
+# Arthur Lee. Modified Jan.20.2020
+# Function for calculating AUC of CBS and yhat from x using numerical approximation.
+
+CBSfunc <- function(xpos,ypos,x = NULL,javaswitch = TRUE){
+  if (is.null(x)){ #x is not provided. hence calculating AUC
+    return(CBSAUC(xpos,ypos))
+  } else { # x is provided. hence calculating yhat
+    # if javaswitch is true, try calling the java function. If not, use R implementation of numerical approximation, which is 13~14 times slower
+    if (javaswitch) { # call the java function
+      y <- .jcall("CBScalc", returnSig = "[D","getyhat",xpos,ypos,x)
+    } else {
+      # R implementation of numerical approximation
+      y <- rep(NA, length(x))
+      for(i in seq(4, length(xpos), 3)) {
+        if (i==4){idx = x <=xpos[i]} else {idx = xpos[i-3] < x & x <= xpos[i]}
+        # calculate cubic equation coefficients
+        a = -xpos[i-3]+3*xpos[i-2]-3*xpos[i-1]+xpos[i]
+        b = 3*xpos[i-3]-6*xpos[i-2]+3*xpos[i-1]
+        c = -3*xpos[i-3]+3*xpos[i-2]
+        d = xpos[i-3]-x[idx]
+
+        t = 0.5 # initial point
+        ft = a*t^3 + b*t^2 + c*t+d # f(t)
+        delta = 0.25
+
+        while(max(abs(ft))>0.0000001){ # using bisection, because other methods kept finding root outside of 0 1 (e.g., Newton-Raphson, Halley's Method)
+          t = t-sign(ft)*delta
+          delta = delta/2
+          ft = a*t^3 + b*t^2 + c*t+d
+        }
+        # calculate using deCasteljau's algorithm for numerical stability
+        y[idx] = (1-t)*((1-t)*((1-t)*ypos[i-3]+t*ypos[i-2])+t*((1-t)*ypos[i-2]+t*ypos[i-1])) + t*((1-t)*((1-t)*ypos[i-2]+t*ypos[i-1])+t*((1-t)*ypos[i-1]+t*ypos[i]))
+      }
+    }
+    return(y)
+  }
+}
+
+CBSAUC <- function(xpos,ypos){
+  AUC = 0;
+  for(i in seq(1,length(xpos)-1,3)){
+    AUC = AUC + partialAUC(xpos[i],xpos[i+1],xpos[i+2],xpos[i+3],ypos[i],ypos[i+1],ypos[i+2],ypos[i+3])
+  }
+  return(AUC)
+}
+
+partialAUC <- function(x1,x2,x3,x4,y1,y2,y3,y4){return((6*x2*y1-6*x1*y2-10*x1*y1-3*x1*y3+3*x3*y1-x1*y4-3*x2*y3+3*x3*y2+x4*y1-3*x2*y4+3*x4*y2-6*x3*y4+6*x4*y3+10*x4*y4)/20)}

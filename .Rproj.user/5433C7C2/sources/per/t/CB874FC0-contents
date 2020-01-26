@@ -1,0 +1,71 @@
+# CBS_ITC.R
+# Arthur Lee. Modified Jan.22.2020
+# Function for fitting CBS 1-piece or 2-piece function to Intertemporal choice data.
+# choice would be 1 if they chose option 1 or 0 if they chose option 2
+# Var should be scaled delay, (e.g., Var = Delay/max(Delay))
+
+CBS_ITC <- function(choice,Amt1,Var1,Amt2,Var2,numpiece){
+  # insert var checking to make sure they are all between 0 and 1
+
+  lb <- c(-36,rep(0, 6*numpiece-1)) # lower bounds
+  ub <- c(36,rep(1, 6*numpiece-1)) # upper bounds
+  numfit <- 40*numpiece; # number of search starting points
+  opts <- list("algorithm"="NLOPT_LD_SLSQP","print_level"=1) # optimization options. maybe try NLOPT_GN_ISRES later
+
+  if (numpiece == 1) { # active parameters (6): logbeta, x2, x3, y2, y3, y4
+    x0 <- c(0,1/3,2/3,2/3,1/3,0.01);
+    eqcon = NULL
+
+  } else if (numpiece == 2){
+    eqcon = g_eq_and_jac
+  }
+  nloptr(x0, eval_f = negLL, lb = lb, ub = ub, eval_g_ineq = NULL, eval_g_eq = eqcon, opts = list(), ...)
+
+}
+
+# objective function: negative log likelihood
+negLL <- fuinction(params,Amt1,Var1,Amt2,Var2,choice){
+  yhat1 = CBSfunc(c(0,params[2:(length(params)/2)],1), c(1,params[(length(params)/2)+1:length(params)]), Var1)
+  yhat2 = CBSfunc(c(0,params[2:(length(params)/2)],1), c(1,params[(length(params)/2)+1:length(params)]), Var2)
+  DV <- Amt1*yhat1 - Amt2*yhat2 # diff between utilities
+  DV[choice==0] = -DV[choice==0] # utility toward choice
+  reg = -exp(params[1])*DV # scaling by noise parameter
+  logp = -log(1+exp(reg)) # directly calculating logp
+  logp[reg>709] = -reg[reg>709]; # log(realmax) is about 709.7827. (e.g., try log(exp(709)) vs. log(exp(710)))
+  negLL = -mean(logp) # making normalized LL space.
+  return(negLL)
+}
+
+# constraint equality objective and jacobian
+g_eq_and_jac <- function(params){
+  # nonlinear equality: (x4-x3)/(y4-y3) = (x5-x4)/(y5-y4)
+  x3 = params[3]; x4 = params[4]; x5 = params[5]; y3 = params[8]; y4 = params[9]; y5 = params[10];
+  return( list( "objective" = (x4-x3)*(y5-y4)-(x5-x4)*(y4-y3), "gradient" = c(0,0,y4-y5,y5-y3,y3-y4,0,0,x5-x4,x3-x5,x4-x3,0,0) ) )
+}
+
+# constraint inequality objective and jacobian
+g_ineq_and_jac_1piece <- function(params){
+  x2 = params[2]; x3 = params[3]; y2  = params[4]; y3 = params[5]; y4 = params[6]
+  # linear constraints: y4-y3<0, y4-y2<0
+  obj_ineq[1] = y4-y3; obj_ineq[2] = y4-y2;
+
+
+  jac_ineq = rbind(c(0,0,-2*x3+2*x4,-2*x4+2*x3,0,0,0,-2*y3+2*y4,-2*y4+2*y3,0,0,0),
+                   c(0,0,0,-2*x4+2*x5,-2*x5+2*x4,0,0,0,-2*y4+2*y5,-2*y5+2*y4,0,0))
+
+  return( list( "objective" = obj_ineq, "gradient" = jac_ineq))
+}
+
+g_ineq_and_jac_2piece <- function(params){
+  # non-linear inequalities: 0.1^2 -(x4-x3)^2 -(y4-y3)^2 < 0, 0.1^2-(x5-x4)^2-(y5-y4)^2 < 0
+  x3 = params[3]; x4 = params[4]; x5 = params[5]; y3 = params[8]; y4 = params[9]; y5 = params[10];
+  minhandle = 0.1
+
+  obj_ineq[1] = minhandle^2 -(x4-x3)^2 -(y4-y3)^2
+  obj_ineq[2] = minhandle^2 -(x5-x4)^2 -(y5-y4)^2
+
+  jac_ineq = rbind(c(0,0,-2*x3+2*x4,-2*x4+2*x3,0,0,0,-2*y3+2*y4,-2*y4+2*y3,0,0,0),
+                   c(0,0,0,-2*x4+2*x5,-2*x5+2*x4,0,0,0,-2*y4+2*y5,-2*y5+2*y4,0,0))
+
+  return( list( "objective" = obj_ineq, "gradient" = jac_ineq))
+}
