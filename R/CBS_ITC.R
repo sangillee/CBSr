@@ -1,13 +1,40 @@
-# CBS_ITC.R
-# Arthur Lee. Modified Jan.25.2020
-# Function for fitting CBS 1-piece or 2-piece function to Intertemporal choice data.
-# choice would be 1 if they chose option 1 or 0 if they chose option 2
-# Var should be scaled delay, (e.g., Var = Delay/max(Delay))
-# Because NlcOptim package does not have a multistart function (and is slower than MATLAB),
+#' CBS_ITC.R
+#'
+#' Fit either a 1-piece or 2-piece CBS latent utility function to binary intertemporal choice data.
+#'
+#' The data should be consisted of n trials (ideally n > 100) in which a participant made choices between two reward options.
+#' At least one of the two options should be delayed such that option 1 is receiving \code{Amt1} in delay1 and option 2 is receiving
+#' \code{Amt2} in delay2. If one of the options are immediate, than delay may be 0. If the participant chose option 1, \code{choice}
+#' should be 1 and 0 otherwise. Note that before running this function, the delay should be normalized to [0 1]. For example if
+#' delay1 ranges from 0 to max_delay1, and delay2 ranges from 20 to max_delay2, one could normalize all delays by \code{normD = max{max_delay1,max_delay2}}.
+#' Hence, \code{Var1} should be delay1/normD and \code{Var2} should be delay2/normD. This normalization is not done internally because
+#' the choice of the normalization constant affects how the CBS function can fit the data.
+#'
+#' @param choice Vector of 0s and 1s. 1 if the choice was option 1, 0 if the choice was option 2
+#' @param Amt1 Vector of real numbers. Reward amount of choice 1.
+#' @param Var1 Vector of real numbers. Delay until the reward of choice 1. Should be normalized within 0 and 1
+#' @param Amt2 Vector of real numbers. Reward amount of choice 2.
+#' @param Var2 Vector of real numbers. Delay until the reward of choice 2. Should be normalized within 0 and 1
+#' @param numpiece Either 1 or 2. Number of CBS pieces to use.
+#' @return A list containing the following:
+#' \itemize{
+#'     \item \code{type}: either 'CBS1' or 'CBS2' depending on the number of pieces
+#'     \item \code{LL}: log likelihood of the model
+#'     \item \code{numparam}: number of total parameters in the model
+#'     \item \code{scale}: scaling factor of the logit model
+#'     \item \code{xpos}: x coordinates of the fitted CBS function
+#'     \item \code{ypos}: y coordinates of the fitted CBS function
+#'     \item \code{AUC}: area under the curve of the fitted CBS function
+#'     \item \code{Origmodel} : NlcOptim object of the fitted CBS function. Not intended to be useful, but contains diagnostic information such as convergence condition, iterations, etc.
+#' }
+
+# Because NlcOptim package does not have a multistart function (and is slower than MATLAB's fmincon),
 # we're using fewer starting points. (But NlcOptim seems at least miles faster than other non-linear constraint optimization packages)
 
 CBS_ITC <- function(choice,Amt1,Var1,Amt2,Var2,numpiece){
-  if(any(Var1>1) | any(Var1<0) | any(Var2>1) | any(Var2<0) ){stop("delay not normalized to [0 1]")}
+  if(any(Var1>1) | any(Var1<0) | any(Var2>1) | any(Var2<0) ){
+    normD = max(Var1,Var2); Var1 = Var1/normD; Var2 = Var2/normD # normalizing delay to [0 1] for easier parameter search
+  }
   numparam <- 6*numpiece; numfit <- 10*numpiece
 
   lb <- c(-36,rep(0, numparam-1)) # lower bounds
