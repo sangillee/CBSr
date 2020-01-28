@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "731307604",
+    "hash" : "3870959928",
     "id" : "78DA3414",
-    "lastKnownWriteTime" : 1580003146,
-    "last_content_update" : 1580003146225,
+    "lastKnownWriteTime" : 1580186683,
+    "last_content_update" : 1580186683541,
     "path" : "C:/Users/sangi/Downloads/examples.R",
     "project_path" : null,
     "properties" : {
-        "cursorPosition" : "24,0",
+        "cursorPosition" : "17,15",
         "scrollLine" : "0"
     },
     "read_only" : false,

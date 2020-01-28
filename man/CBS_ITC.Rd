@@ -2,22 +2,24 @@
 % Please edit documentation in R/CBS_ITC.R
 \name{CBS_ITC}
 \alias{CBS_ITC}
-\title{CBS_ITC.R}
+\title{CBS_ITC}
 \usage{
-CBS_ITC(choice, Amt1, Var1, Amt2, Var2, numpiece)
+CBS_ITC(choice, Amt1, Delay1, Amt2, Delay2, numpiece, numfit = NULL)
 }
 \arguments{
 \item{choice}{Vector of 0s and 1s. 1 if the choice was option 1, 0 if the choice was option 2}
 
-\item{Amt1}{Vector of real numbers. Reward amount of choice 1.}
+\item{Amt1}{Vector of positive real numbers. Reward amount of choice 1.}
 
-\item{Var1}{Vector of real numbers. Delay until the reward of choice 1. Should be normalized within 0 and 1}
+\item{Delay1}{Vector of positive real numbers. Delay until the reward of choice 1.}
 
-\item{Amt2}{Vector of real numbers. Reward amount of choice 2.}
+\item{Amt2}{Vector of positive real numbers. Reward amount of choice 2.}
 
-\item{Var2}{Vector of real numbers. Delay until the reward of choice 2. Should be normalized within 0 and 1}
+\item{Delay2}{Vector of positive real numbers. Delay until the reward of choice 2.}
 
 \item{numpiece}{Either 1 or 2. Number of CBS pieces to use.}
+
+\item{numfit}{Number of model fits to perform from different starting points. If not provided, numfit = 10*numpiece}
 }
 \value{
 A list containing the following:
@@ -28,19 +30,16 @@ A list containing the following:
     \item \code{scale}: scaling factor of the logit model
     \item \code{xpos}: x coordinates of the fitted CBS function
     \item \code{ypos}: y coordinates of the fitted CBS function
-    \item \code{AUC}: area under the curve of the fitted CBS function
-    \item \code{Origmodel} : NlcOptim object of the fitted CBS function. Not intended to be useful, but contains diagnostic information such as convergence condition, iterations, etc.
+    \item \code{AUC}: area under the curve of the fitted CBS function. Normalized to be between 0 and 1.
+    \item \code{normD} : The domain of CBS function runs from 0 to \code{normD}. Specifically, this is the constant used to normalize all delays between 0 and 1, since CBS is fitted in a unit square first and then scaled up.
 }
 }
 \description{
 Fit either a 1-piece or 2-piece CBS latent utility function to binary intertemporal choice data.
 }
 \details{
-The data should be consisted of n trials (ideally n > 100) in which a participant made choices between two reward options.
-At least one of the two options should be delayed such that option 1 is receiving \code{Amt1} in delay1 and option 2 is receiving
-\code{Amt2} in delay2. If one of the options are immediate, than delay may be 0. If the participant chose option 1, \code{choice}
-should be 1 and 0 otherwise. Note that before running this function, the delay should be normalized to [0 1]. For example if
-delay1 ranges from 0 to max_delay1, and delay2 ranges from 20 to max_delay2, one could normalize all delays by \code{normD = max{max_delay1,max_delay2}}.
-Hence, \code{Var1} should be delay1/normD and \code{Var2} should be delay2/normD. This normalization is not done internally because
-the choice of the normalization constant affects how the CBS function can fit the data.
+The input data has n choices (ideally n > 100) between two reward options.
+Option 1 is receiving \code{Amt1} in \code{Delay1} and Option 2 is receiving \code{Amt2} in \code{Delay2} (e.g., $40 in 20 days vs. $20 in 3 days).
+One of the two options may be immediate (i.e., delay = 0; e.g., $40 in 20 days vs. $20 today).
+\code{choice} should be 1 if option 1 is chosen, 0 if option 2 is chosen.
 }

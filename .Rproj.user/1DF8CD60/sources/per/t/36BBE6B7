@@ -1,24 +1,24 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1579918226353.000,
+    "created" : 1580161688922.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2126303704",
-    "id" : "AE83D4FE",
-    "lastKnownWriteTime" : 1580186736,
-    "last_content_update" : 1580186736940,
-    "path" : "Q:/Packages/CBS/CBSr/R/CBS_ITC.R",
-    "project_path" : "R/CBS_ITC.R",
+    "hash" : "571294549",
+    "id" : "36BBE6B7",
+    "lastKnownWriteTime" : 1580181956,
+    "last_content_update" : 1580181956845,
+    "path" : "Q:/Packages/CBS/CBSr/R/CBSfunc.R",
+    "project_path" : "R/CBSfunc.R",
     "properties" : {
-        "cursorPosition" : "49,53",
+        "cursorPosition" : "15,108",
         "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 2,
+    "relative_order" : 1,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

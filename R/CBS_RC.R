@@ -6,8 +6,10 @@
 # Because NlcOptim package does not have a multistart function (and is slower than MATLAB),
 # we're using fewer starting points. (But NlcOptim seems at least miles faster than other non-linear constraint optimization packages)
 
-CBS_RC <- function(choice,Amt1,Var1,Amt2,Var2,numpiece){
-  if(any(Var1>1) | any(Var1<0) | any(Var2>1) | any(Var2<0) ){stop("prob not within [0 1]")}
+CBS_RC <- function(choice,Amt1,Prob1,Amt2,Prob2,numpiece){
+  CBS_error(choice,Amt1,Prob1,Amt2,Prob2,numpiece) # error checking
+
+  if(any(Prob1>1) | any(Prob2>1)){stop("prob not within [0 1]")}
   numparam <- 6*numpiece; numfit <- 10*numpiece
 
   lb <- c(-36,rep(0, 6*numpiece-2)) # lower bounds
@@ -30,11 +32,11 @@ CBS_RC <- function(choice,Amt1,Var1,Amt2,Var2,numpiece){
 
 
     B = matrix(numeric(8), nrow=8, ncol=1);
-    confun = RCtwopiece_nonlincon
+    confun = twopiece_nonlincon
     x0 = c(0,1/6,2/6,3/6,4/6,5/6, 1/6,2/6,3/6,4/6,5/6)
   }
   # optimizer input and options
-  funcinput <- list(X = x0, objfun = function(x) RCnegLL(x,Amt1,Var1,Amt2,Var2,choice), confun = confun, A = A, B = B,
+  funcinput <- list(X = x0, objfun = function(x) RCnegLL(x,Amt1,Prob1,Amt2,Prob2,choice,(numparam+1)/2), confun = confun, A = A, B = B,
                     Aeq = NULL, Beq = NULL, lb = lb, ub = ub, tolX = 1e-04,tolFun = 1e-04, tolCon = 1e-04, maxnFun = 1e+07, maxIter = 4000)
 
   # fitting
@@ -63,26 +65,10 @@ RCfitter <- function(inputlist){
   return(mdl)
 }
 
-RCnegLL <- function(x,A1,V1,A2,V2,Ch){ # objective function: negative log likelihood
-  cutoff <- (length(x)+1)/2
+RCnegLL <- function(x,A1,V1,A2,V2,Ch,cutoff){ # objective function: negative log likelihood
   yhat1 <- CBSfunc(c(0,x[2:cutoff],1), c(0,tail(x,-cutoff),1), V1)
   yhat2 <- CBSfunc(c(0,x[2:cutoff],1), c(0,tail(x,-cutoff),1), V2)
-  DV <- A1*yhat1 - A2*yhat2 # diff between utilities
-  DV[Ch==0] = -DV[Ch==0] # utility toward choice
-  reg = -exp(x[1])*DV # scaling by noise parameter
-  logp = -log(1+exp(reg)) # directly calculating logp
-  logp[reg>709] = -reg[reg>709]; # log(realmax) is about 709.7827. (e.g., try log(exp(709)) vs. log(exp(710)))
-  return(-mean(logp)) # making per-trial LL
-}
-
-RCtwopiece_nonlincon <- function(x){
-  minhandle = 0.1
-  x3 = x[3]; x4 = x[4]; x5 = x[5]; y3 = x[8]; y4 = x[9]; y5 = x[10]
-  # non-linear inequalities: 0.1^2 -(x4-x3)^2 -(y4-y3)^2 < 0, 0.1^2-(x5-x4)^2-(y5-y4)^2 < 0
-  c_ineq = c(minhandle^2 -(x4-x3)^2 -(y4-y3)^2, minhandle^2 -(x5-x4)^2 -(y5-y4)^2)
-  # non-linear equalities: (x4-x3)/(y4-y3) = (x5-x4)/(y5-y4)
-  ceq = (x4-x3)*(y5-y4)-(x5-x4)*(y4-y3)
-  return(list(c=c_ineq,ceq=ceq))
+  return(negLL_logit(x[1],A1,yhat1,A2,yhat2,Ch))
 }
 
 RCrandstartpoint <- function(numpiece){

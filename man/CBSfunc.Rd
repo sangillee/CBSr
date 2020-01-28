@@ -2,9 +2,9 @@
 % Please edit documentation in R/CBSfunc.R
 \name{CBSfunc}
 \alias{CBSfunc}
-\title{CBSfunc.R}
+\title{CBSfunc}
 \usage{
-CBSfunc(xpos, ypos, x = NULL, javaswitch = TRUE)
+CBSfunc(xpos, ypos, x = NULL)
 }
 \arguments{
 \item{xpos}{Vector of real numbers of length 1+3n (n = 1, 2, 3, ...), corresponding to Bezier points' x-coordinates of a CBS function}
@@ -12,18 +12,14 @@ CBSfunc(xpos, ypos, x = NULL, javaswitch = TRUE)
 \item{ypos}{Vector of real numbers of length 1+3n (n = 1, 2, 3, ...), corresponding to Bezier points' y-coordinates of a CBS function}
 
 \item{x}{Vector of real numbers, corresponding to x-coordinates of a CBS function. Default value is Null.}
-
-\item{javaswitch}{Boolean indicator. If true, uses java function to calculate y given x. If false, uses R function to do so. By default, it's true as java function is much faster.}
 }
 \value{
-If x is provided, return y coordinates corresponding to x.
-If x is not provided, return AUC.
+If x is provided, return y coordinates corresponding to x. If x is not provided, return AUC.
 }
 \description{
-Calculate either the Area Under the Curve (AUC) of a CBS function, or calculate the y coordinates of CBS function given x
+Calculate either the Area Under the Curve (AUC) of a CBS function, or calculate the y coordinates of CBS function given x.
 }
 \examples{
 CBSfunc(c(0,0.3,0.6,1),c(0.5, 0.2, 0.7, 0.9))
 CBSfunc(c(0,0.3,0.6,1),c(0.5, 0.2, 0.7, 0.9),seq(0,1,0.1))
-CBSfunc(c(0,0.3,0.6,1),c(0.5, 0.2, 0.7, 0.9),seq(0,1,0.1),FALSE)
 }
