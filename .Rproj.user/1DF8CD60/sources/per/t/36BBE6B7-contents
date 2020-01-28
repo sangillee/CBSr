@@ -11,13 +11,14 @@
 #' @export
 
 CBSfunc <- function(xpos,ypos,x = NULL){
+  xpos <- as.double(xpos); ypos <- as.double(ypos); x <- as.double(x)
   if (length(xpos) != length(ypos)){stop("length of xpos and ypos different!")}
   if (length(xpos) < 4){stop("length of xpos and ypos too short. They must have at least 4 elements")}
   if (length(xpos)%%3 != 1){stop("unexpected length of xpos and ypos. They should be 3n+1 (n = 1, 2, ...)")}
   if (is.null(x)){ #x is not provided. hence calculating AUC
     return(CBSAUC(xpos,ypos))
   } else { # x is provided. hence calculating yhat
-    return(.jcall("CBScalc", returnSig = "[D","getyhat",xpos,ypos,.jarray(as.double(x))))
+    return(.jcall("CBScalc", returnSig = "[D","getyhat",xpos,ypos,.jarray(x)))
   }
 }
 
@@ -47,7 +48,7 @@ partialAUC <- function(x1,x2,x3,x4,y1,y2,y3,y4){
   check2 = x1 <= x2
   check3 = x3 <= x4
   if (!check1 || !check2 || !check3){
-    stop("CBS x coordinates not a monotonic function of t. Multiple y for x may exist. Can't calculate AUC")
+    print("CBS x coordinates not a monotonic function of t. Multiple y for x may exist. AUC may be inaccurate")
   }
   return((6*x2*y1-6*x1*y2-10*x1*y1-3*x1*y3+3*x3*y1-x1*y4-3*x2*y3+3*x3*y2+x4*y1-3*x2*y4+3*x4*y2-6*x3*y4+6*x4*y3+10*x4*y4)/20)
 }

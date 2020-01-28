@@ -7,7 +7,7 @@
 #' One of the two options may be immediate (i.e., delay = 0; e.g., $40 in 20 days vs. $20 today).
 #' \code{choice} should be 1 if option 1 is chosen, 0 if option 2 is chosen.
 #'
-#' @param choice Vector of 0s and 1s. 1 if the choice was option 1, 0 if the choice was option 2
+#' @param choice Vector of 0s and 1s. 1 if the choice was option 1, 0 if the choice was option 2.
 #' @param Amt1 Vector of positive real numbers. Reward amount of choice 1.
 #' @param Delay1 Vector of positive real numbers. Delay until the reward of choice 1.
 #' @param Amt2 Vector of positive real numbers. Reward amount of choice 2.
@@ -60,7 +60,7 @@ CBS_ITC <- function(choice,Amt1,Delay1,Amt2,Delay2,numpiece,numfit=NULL){
   }
   # optimizer input and options
   funcinput <- list(objfun = function(x) ITCnegLL(x,Amt1,Delay1,Amt2,Delay2,choice,3*numpiece), confun = confun, A = A, B = B,
-                    Aeq = NULL, Beq = NULL, lb = lb, ub = ub, tolX = 1e-04,tolFun = 1e-04, tolCon = minpad, maxnFun = 1e+07, maxIter = 4000)
+                    Aeq = NULL, Beq = NULL, lb = lb, ub = ub, tolX = 1e-04, tolFun = 1e-04, tolCon = minpad, maxnFun = 1e+07, maxIter = 400)
 
   # fitting
   mdl <- CBS_fitloop(funcinput,ITCrandstartpoint(numpiece,numfit))

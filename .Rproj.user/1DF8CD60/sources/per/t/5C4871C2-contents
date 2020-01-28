@@ -50,16 +50,19 @@ CBS_error <- function(choice,Amt1,Var1,Amt2,Var2,numpiece,numfit){
 #' Also, NlcOptim package causes errors at certain situations that doesn't seem to be due to my misuse.
 #' It seems that it fails when numerical derivatives and/or constraint matrices are close to singular, which is not something I can know/control a priori.
 #' Hence, until I figure out a better way to deal with it (or NlcOptim package is updated to be more robust), we just try a different starting point.
+#' From extensive testing on all data I have, it seems to happen once or twice every few hundred fittings.
 #' I also tried other optimization packages that support non-linear inequality AND equality constraints, but they were all much slower than NlcOptim, which is already slower than MATLAB's fmincon.
+#' Other developers, who want to see what errors I'm talking about, set the 'silent=TRUE' to FALSE in the try statement below.
 #' @noRd
 
 CBS_fitloop <- function(inputlist,startingpoints){
+  start_time <- Sys.time()
   successcounter = 0
   bestmdl <- NULL
   for(i in 1:dim(startingpoints)[1]){ # looping through starting points. Each row of the matrix is a starting point.
     newmdl <- NULL
     inputlist$X = startingpoints[i,] # new starting point
-    try(newmdl <- do.call(solnl,inputlist),silent=FALSE) # try fitting
+    try(newmdl <- do.call(solnl,inputlist),silent=TRUE) # try fitting
     if(!is.null(newmdl)){ # if the fitting succeeded
       successcounter = successcounter+1
       if(is.null(bestmdl)){bestmdl <- newmdl} # if current best model was Null, change it to the new fit
@@ -70,5 +73,6 @@ CBS_fitloop <- function(inputlist,startingpoints){
   }
   if(is.null(bestmdl)){stop("No convergence! Consider using more starting points (numfit)")}
   else{print(paste(successcounter,"out of",dim(startingpoints)[1],"models converged with a local solution"))}
+  print(paste("Fitting Time :",round(Sys.time() - start_time,2),"seconds"))
   return(bestmdl)
 }

@@ -5,20 +5,20 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2126303704",
+    "hash" : "126577762",
     "id" : "AE83D4FE",
-    "lastKnownWriteTime" : 1580186736,
-    "last_content_update" : 1580186736940,
+    "lastKnownWriteTime" : 1580234310,
+    "last_content_update" : 1580234310341,
     "path" : "Q:/Packages/CBS/CBSr/R/CBS_ITC.R",
     "project_path" : "R/CBS_ITC.R",
     "properties" : {
-        "cursorPosition" : "49,53",
+        "cursorPosition" : "92,43",
         "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 2,
+    "relative_order" : 3,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"
