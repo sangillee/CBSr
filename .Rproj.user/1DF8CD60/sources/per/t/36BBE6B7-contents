@@ -11,14 +11,14 @@
 #' @export
 
 CBSfunc <- function(xpos,ypos,x = NULL){
-  xpos <- as.double(xpos); ypos <- as.double(ypos); x <- as.double(x)
+  xpos <- as.double(xpos); ypos <- as.double(ypos)
   if (length(xpos) != length(ypos)){stop("length of xpos and ypos different!")}
   if (length(xpos) < 4){stop("length of xpos and ypos too short. They must have at least 4 elements")}
   if (length(xpos)%%3 != 1){stop("unexpected length of xpos and ypos. They should be 3n+1 (n = 1, 2, ...)")}
   if (is.null(x)){ #x is not provided. hence calculating AUC
     return(CBSAUC(xpos,ypos))
   } else { # x is provided. hence calculating yhat
-    return(.jcall("CBScalc", returnSig = "[D","getyhat",xpos,ypos,.jarray(x)))
+    return(.jcall("CBScalc", returnSig = "[D","getyhat",xpos,ypos,.jarray(as.double(x))))
   }
 }
 

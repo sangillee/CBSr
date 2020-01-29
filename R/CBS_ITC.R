@@ -41,7 +41,7 @@ CBS_ITC <- function(choice,Amt1,Delay1,Amt2,Delay2,numpiece,numfit=NULL){
   # parameter bounds
   lb <- c(-36,rep(minpad,6*numpiece-1)); ub <- c(36,rep(maxpad,6*numpiece-1))
   if (numpiece == 1){ # active parameters (6): logbeta, x2, x3, y2, y3, y4
-    A = rbind(c(0,0,0,0,-1,1),c(0,0,0,-1,0,1)); B = numeric(-minpad,2) # linear constraints: y4-y3<0, y4-y2<0
+    A = rbind(c(0,0,0,0,-1,1),c(0,0,0,-1,0,1)); B = rep(-minpad,2) # linear constraints: y4-y3<0, y4-y2<0
     confun = NULL # no non-linear constraints
   } else if (numpiece == 2){ # active parameters (12): logbeta, x2,x3,x4,x5,x6, y2,y3,y4,y5,y6,y7
     # linear constraints:
@@ -86,7 +86,7 @@ ITCnegLL <- function(x,A1,V1,A2,V2,Ch,cutoff){
 
 #' ITCrandstartpoint
 #'
-#' Provides random starting points for the CBS fitting function.
+#' Provides starting points for the CBS fitting function.
 #' @noRd
 
 ITCrandstartpoint <- function(numpiece,numpoints){

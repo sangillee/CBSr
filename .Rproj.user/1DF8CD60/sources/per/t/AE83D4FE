@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "126577762",
+    "hash" : "4002642948",
     "id" : "AE83D4FE",
-    "lastKnownWriteTime" : 1580234310,
-    "last_content_update" : 1580234310341,
+    "lastKnownWriteTime" : 1580265214,
+    "last_content_update" : 1580265214380,
     "path" : "Q:/Packages/CBS/CBSr/R/CBS_ITC.R",
     "project_path" : "R/CBS_ITC.R",
     "properties" : {
-        "cursorPosition" : "92,43",
+        "cursorPosition" : "25,109",
         "scrollLine" : "0"
     },
     "read_only" : false,

@@ -30,7 +30,7 @@
 CBS_RC <- function(choice,Amt1,Prob1,Amt2,Prob2,numpiece,numfit=NULL){
   CBS_error(choice,Amt1,Prob1,Amt2,Prob2,numpiece,numfit) # error checking
   minpad = 1e-04; maxpad = 1-minpad # pad around bounds because the solving algorithm tests values around the bounds
-  if(is.null(numfit)){numfit = 20*numpiece} # if not provided, use default number of numfit
+  if(is.null(numfit)){numfit = 10*numpiece} # if not provided, use default number of numfit
 
   # checking to make sure probability is within 0 and 1
   if(any(Prob1>1) | any(Prob2>1)){stop("prob not within [0 1]")}
@@ -78,7 +78,7 @@ CBS_RC <- function(choice,Amt1,Prob1,Amt2,Prob2,numpiece,numfit=NULL){
 #' \code{cutoff} marks the index of x that corresponds to last xpos
 #' @noRd
 
-RCnegLL <- function(x,A1,V1,A2,V2,Ch,cutoff){ # objective function: negative log likelihood
+RCnegLL <- function(x,A1,V1,A2,V2,Ch,cutoff){
   yhat1 <- CBSfunc(c(0,x[2:cutoff],1), c(0,tail(x,-cutoff),1), V1)
   yhat2 <- CBSfunc(c(0,x[2:cutoff],1), c(0,tail(x,-cutoff),1), V2)
   return(negLL_logit(x[1],A1,yhat1,A2,yhat2,Ch))
@@ -86,11 +86,11 @@ RCnegLL <- function(x,A1,V1,A2,V2,Ch,cutoff){ # objective function: negative log
 
 #' Rrandstartpoint
 #'
-#' Provides random starting points for the CBS fitting function.
+#' Provides starting points for the CBS fitting function.
 #' @noRd
 
 RCrandstartpoint <- function(numpiece,numpoints){
   sp <- seq(0.12,0.88,length.out=numpoints)
-  if(numpiece == 1){return( cbind(numeric(numpoints),1-sp,1-sp,sp,sp) )} # active parameters (11): logbeta, x2,x3,x4,x5,x6, y2,y3,y4,y5,y6
+  if(numpiece == 1){return( cbind(numeric(numpoints),1-sp,1-sp,sp,sp) )}
   else {return( cbind(numeric(numpoints),1-sp-0.11,1-sp-0.11,1-sp,1-sp+0.11,1-sp+0.11,sp-0.11,sp-0.11,sp,sp+0.11,sp+0.11) )}
 }
