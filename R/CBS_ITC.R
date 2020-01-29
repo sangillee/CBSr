@@ -68,7 +68,7 @@ CBS_ITC <- function(choice,Amt1,Delay1,Amt2,Delay2,numpiece,numfit=NULL){
   # organizing output
   LL <- -mdl$fn*length(choice)
   xpos <- c(0,mdl$par[2:(3*numpiece)],1)
-  ypos <- c(1,tail(mdl$par,-3*numpiece))
+  ypos <- c(1,mdl$par[(3*numpiece+1):(6*numpiece)])
   return( list("type" = paste("CBS",numpiece,sep=""), "LL" = LL, "numparam" = 6*numpiece, "scale" = exp(mdl$par[1]),"xpos"= nD*xpos, "ypos"=ypos, "AUC" = CBSfunc(xpos,ypos),"normD"=nD) )
 }
 
@@ -79,8 +79,8 @@ CBS_ITC <- function(choice,Amt1,Delay1,Amt2,Delay2,numpiece,numfit=NULL){
 #' @noRd
 
 ITCnegLL <- function(x,A1,V1,A2,V2,Ch,cutoff){
-  yhat1 <- CBSfunc(c(0,x[2:cutoff],1), c(1,tail(x,-cutoff)), V1)
-  yhat2 <- CBSfunc(c(0,x[2:cutoff],1), c(1,tail(x,-cutoff)), V2)
+  yhat1 <- CBSfunc(c(0,x[2:cutoff],1), c(1,x[(cutoff+1):length(x)],1), V1)
+  yhat2 <- CBSfunc(c(0,x[2:cutoff],1), c(1,x[(cutoff+1):length(x)],1), V2)
   return(negLL_logit(x[1],A1,yhat1,A2,yhat2,Ch))
 }
 

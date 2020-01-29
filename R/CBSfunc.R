@@ -18,7 +18,7 @@ CBSfunc <- function(xpos,ypos,x = NULL){
   if (is.null(x)){ #x is not provided. hence calculating AUC
     return(CBSAUC(xpos,ypos))
   } else { # x is provided. hence calculating yhat
-    return(.jcall("CBScalc", returnSig = "[D","getyhat",xpos,ypos,.jarray(as.double(x))))
+    return(rJava::.jcall("CBScalc", returnSig = "[D","getyhat",xpos,ypos,rJava::.jarray(as.double(x))))
   }
 }
 

@@ -79,8 +79,8 @@ CBS_RC <- function(choice,Amt1,Prob1,Amt2,Prob2,numpiece,numfit=NULL){
 #' @noRd
 
 RCnegLL <- function(x,A1,V1,A2,V2,Ch,cutoff){
-  yhat1 <- CBSfunc(c(0,x[2:cutoff],1), c(0,tail(x,-cutoff),1), V1)
-  yhat2 <- CBSfunc(c(0,x[2:cutoff],1), c(0,tail(x,-cutoff),1), V2)
+  yhat1 <- CBSfunc(c(0,x[2:cutoff],1), c(0,x[(cutoff+1):length(x)],1), V1)
+  yhat2 <- CBSfunc(c(0,x[2:cutoff],1), c(0,x[(cutoff+1):length(x)],1), V2)
   return(negLL_logit(x[1],A1,yhat1,A2,yhat2,Ch))
 }
 

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580323097538.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "950740125",
+    "id" : "76B6D28",
+    "lastKnownWriteTime" : 1580323640,
+    "last_content_update" : 1580323640924,
+    "path" : "Q:/Packages/CBS/CBSr/vignettes/CBS.Rnw",
+    "project_path" : "vignettes/CBS.Rnw",
+    "properties" : {
+        "cursorPosition" : "4,16",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "sweave"
+}

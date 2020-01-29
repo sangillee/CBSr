@@ -9,10 +9,10 @@ Description: Package for using Cubic Bezier Spline as a function approximator es
     an appropriately constrained CBS curve. It then uses this method to approximate latent utility functions in intertemporal choice
     and risky choice data.
 License: GPL-3
-Depends: R (>= 3.5), rJava (>= 0.9-11), NlcOptim (>= 0.6)
+Depends: R (>= 3.5)
 Encoding: UTF-8
 LazyData: true
-Imports: rJava, NlcOptim
+Imports: rJava (>= 0.9-11), NlcOptim (>= 0.6)
 SystemRequirements: Java (>= 7.0)
 NeedsCompilation: no
 RoxygenNote: 7.0.2
