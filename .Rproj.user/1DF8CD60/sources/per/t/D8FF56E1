@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580344980485.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "6454991",
+    "id" : "D8FF56E1",
+    "lastKnownWriteTime" : 1580330430,
+    "last_content_update" : 1580330430,
+    "path" : "Q:/Packages/CBS/CBSr/R/CBSfunc.R",
+    "project_path" : "R/CBSfunc.R",
+    "properties" : {
+        "cursorPosition" : "48,19",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
