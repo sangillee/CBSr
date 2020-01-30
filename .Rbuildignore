@@ -1,3 +1,7 @@
 ^.*\.Rproj$
-^\java$
 ^\.Rproj\.user$
+^\java$
+^\.gitattributes$
+^\.git$
+^cran-comments\.md$
+^README\.Rmd$
