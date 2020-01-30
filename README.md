@@ -6,47 +6,47 @@ R Package for using Cubic Bezier Spline as a function approximator especially in
 
 Example code below:
 
-## fit example ITC data with 2-piece CBS function
+# fit example ITC data with 2-piece CBS function
 
-# each row is a choice between option 1 (Amt at Delay) vs option 2 (20 now).
+## each row is a choice between option 1 (Amt at Delay) vs option 2 (20 now).
 Amount1 = ITCdat$Amt1
 Delay1 = ITCdat$Delay1
 Amount2 = 20
 Delay2 = 0
 Choice = ITCdat$Choice
 
-# fit the model
+## fit the model
 out = CBS_ITC(Choice,Amount1,Delay1,Amount2,Delay2,2)
 
-# plot the choices (x = Delay, y = relative amount : 20 / delayed amount)
+## plot the choices (x = Delay, y = relative amount : 20 / delayed amount)
 plot(Delay1[Choice==1],20/Amount1[Choice==1],type = 'p',col="blue",xlim=c(0, 180), ylim=c(0, 1))
 points(Delay1[Choice==0],20/Amount1[Choice==0],type = 'p',col="red")
 
-# plot the fitted CBS
+## plot the fitted CBS
 x = 0:out$normD
 lines(x,CBSfunc(out$xpos,out$ypos,x),col="black")
 
 
 
 
-## fit example Risky choice data with 2-piece CBS function
+# fit example Risky choice data with 2-piece CBS function
 
-# each row is a choice between option 1 (Amt with prob) vs option 2 (20 for 100%).
+## each row is a choice between option 1 (Amt with prob) vs option 2 (20 for 100%).
 Amount1 = RCdat$Amt1
 Prob1 = RCdat$Prob1
 Amount2 = 20
 Prob2 = 1
 Choice = RCdat$Choice
 
-# there's no need to normalize as probability is already in [0 1]
+## there's no need to normalize as probability is already in [0 1]
 
-# fit the model
+## fit the model
 out = CBS_RC(Choice,Amount1,Prob1,Amount2,Prob2,2)
 
-# plot the choices (x = Delay, y = relative amount : 20 / risky amount)
+## plot the choices (x = Delay, y = relative amount : 20 / risky amount)
 plot(Prob1[Choice==1],20/Amount1[Choice==1],type = 'p',col="blue",xlim=c(0, 1), ylim=c(0, 1))
 points(Prob1[Choice==0],20/Amount1[Choice==0],type = 'p',col="red")
 
-# plot the fitted CBS
+## plot the fitted CBS
 x = seq(0,1,.01)
 lines(x,CBSfunc(out$xpos,out$ypos,x))
