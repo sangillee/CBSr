@@ -38,7 +38,7 @@ Fit either a 1-piece or 2-piece CBS latent utility function to binary risky choi
 }
 \details{
 The input data has n choices (ideally n > 100) between two reward options.
-Option 1 is receiving \code{Amt1} with probability \code{Prob1} and Option 2 is receiving \code{Amt2} with probability \code{Prob2} (e.g., $40 with 53% chance vs. $20 with 90% chance).
-One of the two options may be certain (i.e., prob = 1; e.g., $40 with 53% chance vs. $20 for sure).
+Option 1 is receiving \code{Amt1} with probability \code{Prob1} and Option 2 is receiving \code{Amt2} with probability \code{Prob2} (e.g., $40 with 53\% chance vs. $20 with 90\% chance).
+One of the two options may be certain (i.e., prob = 1; e.g., $40 with 53\% chance vs. $20 for sure).
 \code{choice} should be 1 if option 1 is chosen, 0 if option 2 is chosen.
 }

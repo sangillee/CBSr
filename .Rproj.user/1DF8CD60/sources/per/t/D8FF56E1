@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "6454991",
+    "hash" : "2956012874",
     "id" : "D8FF56E1",
-    "lastKnownWriteTime" : 1580330430,
-    "last_content_update" : 1580330430,
+    "lastKnownWriteTime" : 1581867644,
+    "last_content_update" : 1581867644839,
     "path" : "Q:/Packages/CBS/CBSr/R/CBSfunc.R",
     "project_path" : "R/CBSfunc.R",
     "properties" : {
-        "cursorPosition" : "48,19",
+        "cursorPosition" : "16,19",
         "scrollLine" : "0"
     },
     "read_only" : false,

@@ -72,7 +72,7 @@ CBS_fitloop <- function(inputlist,startingpoints){
     }
   }
   if(is.null(bestmdl)){stop("No convergence! Consider using more starting points (numfit)")}
-  else{print(paste(successcounter,"out of",dim(startingpoints)[1],"models converged with a local solution"))}
-  print(paste("Fitting Time :",round(Sys.time() - start_time,2),"seconds"))
+  else{message(paste(successcounter,"out of",dim(startingpoints)[1],"models converged with a local solution"))}
+  message(paste("Fitting Time :",round(Sys.time() - start_time,2),"seconds"))
   return(bestmdl)
 }

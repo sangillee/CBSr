@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7250 64-bit) (preloaded format=xelatex 2020.1.29)  29 JAN 2020 13:47
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7250 64-bit) (preloaded format=xelatex 2020.1.28)  16 FEB 2020 10:51
 entering extended mode
 **./CBS.tex
 (CBS.tex
@@ -44,23 +44,21 @@ LaTeX Info: Redefining \addtolength on input line 81.
 y"
 Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
 
-("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\atbegsh
+("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/atbegshi\atbegsh
 i.sty"
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 
-("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infware
-rr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/infwarerr\infwar
+err.sty"
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
-("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmds
-.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmds.
+sty"
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
-("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifpdf.sty"
-Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
 ("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
 Package: iftex 2019/11/07 v1.0c TeX engine tests
-)))
+))
 ("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
 y"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
@@ -269,20 +267,16 @@ File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    ... okay on input line 6.
 \AtBeginShipoutBox=\box30
 
-("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\pdflscape
-.sty"
-Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdflscape\pdflscap
+e.sty"
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
 
 ("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\lscape.st
 y"
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
-("C:\Users\sangi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifxetex.st
-y"
-Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-)
-Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 102
-.
+Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
+
 ) (CBS-concordance.tex
 \pdfoutput=\count95
 )
@@ -641,92 +635,14 @@ File: CBS_Manuscript.pdf Graphic file (type pdf)
 <use CBS_Manuscript.pdf, page 49>
 File: CBS_Manuscript.pdf Graphic file (type pdf)
 <use CBS_Manuscript.pdf, page 49>
- [49]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 50>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 50>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 50>
- [50]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 51>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 51>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 51>
- [51]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 52>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 52>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 52>
- [52]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 53>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 53>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 53>
- [53]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 54>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 54>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 54>
- [54]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 55>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 55>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 55>
- [55]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 56>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 56>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 56>
- [56]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 57>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 57>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 57>
-
-[57]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 58>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 58>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 58>
- [58]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 59>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 59>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 59>
- [59]
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 60>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 60>
-File: CBS_Manuscript.pdf Graphic file (type pdf)
-<use CBS_Manuscript.pdf, page 60>
- [60] (CBS.aux) ) 
+ [49] (CBS.aux) ) 
 Here is how much of TeX's memory you used:
- 3386 strings out of 427272
- 48946 string characters out of 3142459
- 112676 words of memory out of 3000000
- 7835 multiletter control sequences out of 15000+200000
+ 3351 strings out of 427264
+ 47859 string characters out of 3142345
+ 112690 words of memory out of 3000000
+ 7813 multiletter control sequences out of 15000+200000
  8133 words of font info for 17 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 45i,18n,45p,244b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,18n,45p,236b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on CBS.pdf (60 pages).
+Output written on CBS.pdf (49 pages).
