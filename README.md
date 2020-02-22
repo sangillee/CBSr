@@ -5,5 +5,8 @@ While Cubic Bezier Splines (CBS) are heavily used in the graphics software indus
 function approximation tool given the right constraints. The CBS package provides a method to calculate the y value  
 from a x value given an appropriately constrained CBS curve. It then uses this method to approximate latent utility  
 functions in intertemporal choice and risky choice data.  
+
+Please use the package on CRAN as it is the latest stable build.  
+
 PsyArXiv : Lee, Glaze, Bradlow, Kable, (2019) <https://doi.org/10.31234/osf.io/2ugwr>.  
 CRAN: https://cran.r-project.org/web/packages/CBSr
