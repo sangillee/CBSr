@@ -30,7 +30,7 @@ A list containing the following:
     \item \code{scale}: scaling factor of the logit model
     \item \code{xpos}: x coordinates of the fitted CBS function
     \item \code{ypos}: y coordinates of the fitted CBS function
-    \item \code{AUC}: area under the curve of the fitted CBS function. Normalized to be between 0 and 1.=
+    \item \code{AUC}: area under the curve of the fitted CBS function. Normalized to be between 0 and 1.
 }
 }
 \description{
