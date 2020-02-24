@@ -15,5 +15,5 @@ Please use the package on CRAN as it is the latest stable build.
 Package on GITHUB is a development version that is not released yet.  
 
 PsyArXiv : Lee, Glaze, Bradlow, Kable, (2019) <https://doi.org/10.31234/osf.io/2ugwr>.  
-CRAN: https://CRAN.R-project.org/package=CBSr
+CRAN: https://CRAN.R-project.org/package=CBSr  
 GITHUB: https://github.com/sangillee/CBSr
