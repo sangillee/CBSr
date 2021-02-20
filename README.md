@@ -1,4 +1,4 @@
-# CBSr 1.0.4
+# CBSr 1.0.5
 
 R Package for using Cubic Bezier Spline as a function approximator especially in modeling latent utility functions.  
 While Cubic Bezier Splines (CBS) are heavily used in the graphics software industry, it can also be used as a flexible  
@@ -14,6 +14,11 @@ See rJava webpage under installation section for more details (http://www.rforge
 Please use the package on CRAN as it is the latest stable build.  
 Package on GITHUB is a development version that is not released yet.  
 
-PsyArXiv : Lee, Glaze, Bradlow, Kable, (2019) <https://doi.org/10.31234/osf.io/2ugwr>.  
+Fun demo video: 
+https://www.youtube.com/watch?v=obR1dpddYow&ab_channel=ArthurSangilLee
+
+Citation:
+Lee, S., Glaze, C. M., Bradlow, E. T., & Kable, J. W. (2020). Flexible Utility Function Approximation via Cubic Bezier Splines. psychometrika, 85(3), 716-737. https://doi.org/10.1007/s11336-020-09723-4
+
 CRAN: https://CRAN.R-project.org/package=CBSr  
 GITHUB: https://github.com/sangillee/CBSr

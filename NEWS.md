@@ -1,3 +1,8 @@
+# CBSr 1.0.5
+
+Removed vignette as it just contained a copy of the PsyArxiv preprint.
+Included Psychometrika article citation and link info in readme file (as well as a demo video link).
+
 # CBSr 1.0.4
 
 Included GITHUB link on README  
